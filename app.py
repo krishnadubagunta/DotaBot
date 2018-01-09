@@ -1,17 +1,9 @@
-from flask import Flask,send_from_directory
-import os
-app = Flask(__name__, static_folder="./static/build")
-@app.route('/', defaults={'path': ''})
-@app.route('/<path:path>')
-def serve(path):
-    if(path == ""):
-        return send_from_directory('static/build', 'index.html')
-    else:
-        if(os.path.exists("static/build/" + path)):
-            return send_from_directory('static/build', path)
-        else:
-            return send_from_directory('static/build', 'index.html')
+from flask import Flask, render_template
+app = Flask(__name__)
 
+@app.route('/')
+def hello_world():
+    return render_template('index.html')
 
-if __name__ == "__main__":
-    app.run(use_reloader=True,port=5000,threaded=True)
+if __name__ == '__main__':
+    app.run(use_reloader=True,port=5000,threaded=True,debug=True)
