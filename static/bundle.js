@@ -14280,6 +14280,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__reducers__ = __webpack_require__(399);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_redux_thunk__ = __webpack_require__(858);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_redux_thunk___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_redux_thunk__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__heros__ = __webpack_require__(395);
 
 
 
@@ -14289,6 +14290,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
+window.heroes = __WEBPACK_IMPORTED_MODULE_8__heros__["a" /* default */];
 var store = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4_redux__["a" /* createStore */])(__WEBPACK_IMPORTED_MODULE_6__reducers__["a" /* default */], {}, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4_redux__["b" /* applyMiddleware */])(__WEBPACK_IMPORTED_MODULE_7_redux_thunk___default.a));
 
 __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -15425,6 +15427,7 @@ var Heroes = function (_Component) {
           __WEBPACK_IMPORTED_MODULE_0_semantic_ui_react_dist_commonjs_collections_Grid_Grid___default.a,
           { columns: 2, centered: true },
           this.state.heros.map(function (hero) {
+            console.log(hero.id);
             return __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(
               __WEBPACK_IMPORTED_MODULE_0_semantic_ui_react_dist_commonjs_collections_Grid_Grid___default.a.Column,
               { key: hero.id },
@@ -16558,54 +16561,6 @@ function mapStateToDispatch(dispatch) {
   localized_name: 'Underlord',
   img: 'https://api.opendota.com/apps/dota2/images/heroes/abyssal_underlord_full.png?',
   icon: 'https://api.opendota.com/apps/dota2/images/heroes/abyssal_underlord_icon.png'
-}, {
-  id: 109,
-  name: 'npc_dota_hero_terrorblade',
-  localized_name: 'Terrorblade',
-  img: 'https://api.opendota.com/apps/dota2/images/heroes/terrorblade_full.png?',
-  icon: 'https://api.opendota.com/apps/dota2/images/heroes/terrorblade_icon.png'
-}, {
-  id: 110,
-  name: 'npc_dota_hero_phoenix',
-  localized_name: 'Phoenix',
-  img: 'https://api.opendota.com/apps/dota2/images/heroes/phoenix_full.png?',
-  icon: 'https://api.opendota.com/apps/dota2/images/heroes/phoenix_icon.png'
-}, {
-  id: 111,
-  name: 'npc_dota_hero_oracle',
-  localized_name: 'Oracle',
-  img: 'https://api.opendota.com/apps/dota2/images/heroes/oracle_full.png?',
-  icon: 'https://api.opendota.com/apps/dota2/images/heroes/oracle_icon.png'
-}, {
-  id: 112,
-  name: 'npc_dota_hero_winter_wyvern',
-  localized_name: 'Winter Wyvern',
-  img: 'https://api.opendota.com/apps/dota2/images/heroes/winter_wyvern_full.png?',
-  icon: 'https://api.opendota.com/apps/dota2/images/heroes/winter_wyvern_icon.png'
-}, {
-  id: 113,
-  name: 'npc_dota_hero_arc_warden',
-  localized_name: 'Arc Warden',
-  img: 'https://api.opendota.com/apps/dota2/images/heroes/arc_warden_full.png?',
-  icon: 'https://api.opendota.com/apps/dota2/images/heroes/arc_warden_icon.png'
-}, {
-  id: 114,
-  name: 'npc_dota_hero_monkey_king',
-  localized_name: 'Monkey King',
-  img: 'https://api.opendota.com/apps/dota2/images/heroes/monkey_king_full.png?',
-  icon: 'https://api.opendota.com/apps/dota2/images/heroes/monkey_king_icon.png'
-}, {
-  id: 119,
-  name: 'npc_dota_hero_dark_willow',
-  localized_name: 'Dark Willow',
-  img: 'https://api.opendota.com/apps/dota2/images/heroes/dark_willow_full.png?',
-  icon: 'https://api.opendota.com/apps/dota2/images/heroes/dark_willow_icon.png'
-}, {
-  id: 120,
-  name: 'npc_dota_hero_pangolier',
-  localized_name: 'Pangolier',
-  img: 'https://api.opendota.com/apps/dota2/images/heroes/pangolier_full.png?',
-  icon: 'https://api.opendota.com/apps/dota2/images/heroes/pangolier_icon.png'
 }]);
 
 /***/ }),
