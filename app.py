@@ -9,7 +9,7 @@ def hello_world():
 def recommend():
     content = request.json
     print(content['x'])
-    res = {"x" : content['x']}
+    res = {"data" : content['y']}
     return jsonify(res)
 
 if __name__ == '__main__':

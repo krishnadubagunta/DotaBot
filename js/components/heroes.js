@@ -70,7 +70,6 @@ class Heroes extends Component {
       >
         <Grid columns={2} centered>
           {this.state.heros.map(hero => {
-            console.log(hero.id);
             return (
               <Grid.Column key={hero.id}>
                 <Card>

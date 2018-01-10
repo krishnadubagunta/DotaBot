@@ -31,15 +31,18 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "cross-env": "^5.0.5",
+    "lodash": "^4.17.4",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.6",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
     "semantic-ui-react": "^0.77.1",
+    "style-loader": "^0.19.1",
     "webpack": "^2.7.0"
   },
   "devDependencies": {
+    "css-loader": "^0.28.8",
     "webpack-bundle-analyzer": "^2.9.2"
   }
 }

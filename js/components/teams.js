@@ -125,14 +125,18 @@ class Teams extends Component {
   render() {
     const { heroes, enemies } = this.state;
     return (
-      <Container fluid style={{ overflowY: 'scroll', overflowX: 'hidden' }}>
-        <Grid stackable columns={5}>
+      <Container fluid style={{ overflowY: 'hidden', overflowX: 'hidden' }}>
+        <Grid centered stackable columns={5}>
           <Grid.Row>
-            <Divider horizontal>Our Team</Divider>
+            <Divider horizontal inverted className="red">
+              Our Team
+            </Divider>
             {this.renderHeroes(heroes, 'hero')}
           </Grid.Row>
           <Grid.Row>
-            <Divider horizontal>Their Team</Divider>
+            <Divider horizontal inverted className="red">
+              Their Team
+            </Divider>
             {this.renderHeroes(enemies, 'enemy')}
           </Grid.Row>
         </Grid>

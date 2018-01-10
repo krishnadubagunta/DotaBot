@@ -16,6 +16,18 @@ const webpackConfig = {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         loader: 'babel-loader'
+      },
+      {
+        test: /\.css&/,
+        use: [
+          {
+            loader: 'css-loader',
+            options: {
+              includePaths: [path.resolve('./js')]
+            }
+          },
+          { loader: 'style-loader' }
+        ]
       }
     ]
   },

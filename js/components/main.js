@@ -6,7 +6,7 @@ import Recommender from './recommender';
 export default class Main extends Component {
   render() {
     return (
-      <Grid columns={2} centered>
+      <Grid columns={2} centered stretched>
         <Grid.Column>
           <Segment style={{ width: '70vw' }}>
             <Recommender />

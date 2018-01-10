@@ -6,7 +6,7 @@ import Main from './components/main';
 export default class App extends Component {
   render() {
     return (
-      <Container fluid>
+      <Container fluid style={{ backgroundColor: 'black' }}>
         <NavBar />
         <Main />
       </Container>
