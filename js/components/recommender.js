@@ -54,7 +54,7 @@ class Recommender extends Component {
         <Grid.Row>
           {this.props.recommendation.length > 0 ? (
             <Container fluid>
-              <Divider horizontal inverted>
+              <Divider horizontal inverted className="red">
                 Recommended Heroes
               </Divider>
               <Grid columns={5} centered stretched>
