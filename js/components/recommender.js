@@ -5,7 +5,8 @@ import {
   Card,
   Image,
   Button,
-  Divider
+  Divider,
+  Statistic
 } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -17,12 +18,29 @@ class Recommender extends Component {
   recommender = () => {
     this.props.recommend(this.state.heroes, this.state.enemies);
   };
-  componentWillReceiveProps({ hero, enemy }) {
-    this.setState({ heroes: hero, enemies: enemy });
+  componentWillReceiveProps({ hero, enemy, recommendation, prob }) {
+    this.setState({
+      heroes: hero,
+      enemies: enemy,
+      recommendation,
+      prob
+    });
   }
+
+  removehero = hero => {
+    const { recommendation } = this.state;
+    var removeIndex = recommendation
+      .map(function(item) {
+        return item.id;
+      })
+      .indexOf(hero.id);
+    recommendation.splice(removeIndex, 1);
+    this.setState({ recommendation });
+  };
 
   handleAdd = (e, { hero }) => {
     this.props.addHero(hero);
+    this.removehero(hero);
   };
 
   renderRecommendation() {
@@ -46,17 +64,23 @@ class Recommender extends Component {
   }
 
   render() {
+    let bool = this.state.recommendation;
+    if (bool) {
+      bool = this.state.recommendation.length > 0;
+    }
     return (
       <Grid centered stackable stretched>
         <Grid.Row>
           <Teams />
         </Grid.Row>
         <Grid.Row>
-          {this.props.recommendation.length > 0 ? (
+          {bool ? (
             <Container fluid>
-              <Divider horizontal inverted className="red">
-                Recommended Heroes
-              </Divider>
+              <Divider horizontal>Recommended Heroes</Divider>
+              <Statistic>
+                <Statistic.Value>{this.state.prob}%</Statistic.Value>
+                <Statistic.Label>Chance of winning</Statistic.Label>
+              </Statistic>
               <Grid columns={5} centered stretched>
                 {this.renderRecommendation()}
               </Grid>
@@ -75,12 +99,12 @@ class Recommender extends Component {
   }
 }
 
-function mapStateToProps({ enemy, hero, recommendation }) {
+function mapStateToProps({ enemy, hero, recommendation: { prob, data } }) {
   let show = false;
   if (enemy.length > 0) {
     show = true;
   }
-  return { show, enemy, hero, recommendation };
+  return { show, enemy, hero, recommendation: data, prob };
 }
 
 function mapStateToDispatch(dispatch) {

@@ -6,7 +6,8 @@ export default function recommendation(state = [], { type, payload }) {
       const res = payload.data.map(id => {
         return hero_ids[`${id}`];
       });
-      return res;
+      const totalData = { data: res, prob: payload.prob_x * 100 };
+      return totalData;
     default:
       return state;
   }
