@@ -13,9 +13,13 @@ import { bindActionCreators } from 'redux';
 import { getHeroes, addHero, addEnemy } from '../actions';
 
 class Heroes extends Component {
-  state = { heros: [], heroAvail: 5, enemyAvail: 5, availability: true };
+  state = {
+    heros: [],
+    heroAvail: true,
+    enemyAvail: true,
+    availability: true
+  };
   componentWillReceiveProps(props) {
-    console.log(props.heros);
     if (props.heros.type === 'LIST') {
       this.setState({ heros: props.heros.payload });
     } else if (props.heros.type === 'ADD') {
@@ -32,6 +36,15 @@ class Heroes extends Component {
       heros.splice(removeIndex, 1);
       this.setState({ heros });
     }
+    if (props.hero.length === 5) {
+      this.setState({ heroAvail: false });
+    }
+    if (props.enemy.length === 5) {
+      this.setState({ enemy: false });
+    }
+    if (!(this.state.heroAvail && this.state.enemyAvail)) {
+      this.setState({ availability: false });
+    }
   }
 
   componentDidMount() {
@@ -40,24 +53,10 @@ class Heroes extends Component {
 
   handleHero = (event, { data }) => {
     this.props.addHero(data);
-    let { heroAvail } = this.state;
-    heroAvail -= 1;
-    this.setState({ heroAvail });
-    console.log(this.state);
-    if (this.state.heros.length < 107) {
-      this.setState({ availability: false });
-    }
   };
 
   handleEnemy = (event, { data }) => {
     this.props.addEnemy(data);
-    let { enemyAvail } = this.state;
-    enemyAvail -= 1;
-    this.setState({ enemyAvail });
-    console.log(this.state);
-    if (this.state.heros.length < 107) {
-      this.setState({ availability: false });
-    }
   };
 
   render() {
@@ -117,9 +116,11 @@ class Heroes extends Component {
   }
 }
 
-function mapStateToProps({ heros: { res } }) {
+function mapStateToProps({ heros: { res }, hero, enemy }) {
   return {
-    heros: res
+    heros: res,
+    hero,
+    enemy
   };
 }
 

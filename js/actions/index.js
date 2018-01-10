@@ -1,4 +1,5 @@
 import heros from '../heros';
+import axios from 'axios';
 
 export const getHeroes = () => async dispatch => {
   dispatch({
@@ -31,11 +32,21 @@ export const addEnemy = hero => async dispatch => {
 
 export const removeHero = hero => async dispatch => {
   dispatch({
-    type: 'REMOVE',
-    payload: { success: true }
-  });
-  dispatch({
     type: 'ADD_HERO_TO_LIST',
     payload: hero
   });
+};
+
+export const recommend = (heroList, enemyList) => async dispatch => {
+  const x = heroList.map(hero => {
+    return hero.id;
+  });
+  const y = enemyList.map(hero => {
+    return hero.id;
+  });
+  const req = JSON.stringify({ x, y });
+  const res = await axios.post('/api/recommend', req, {
+    headers: { 'content-type': 'application/json' }
+  });
+  console.log(res.data);
 };
