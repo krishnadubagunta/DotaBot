@@ -14,7 +14,7 @@ import Teams from './teams';
 import { recommend, addHero } from '../actions';
 
 class Recommender extends Component {
-  state = {};
+  state = { loading: false };
   recommender = () => {
     this.props.recommend(this.state.heroes, this.state.enemies);
   };
@@ -23,7 +23,8 @@ class Recommender extends Component {
       heroes: hero,
       enemies: enemy,
       recommendation,
-      prob
+      prob,
+      loading: false
     });
   }
 
@@ -41,6 +42,7 @@ class Recommender extends Component {
   handleAdd = (e, { hero }) => {
     this.props.addHero(hero);
     this.removehero(hero);
+    this.setState({ loading: true });
   };
 
   renderRecommendation() {
@@ -89,7 +91,12 @@ class Recommender extends Component {
         </Grid.Row>
         <Grid.Row>
           {this.props.show ? (
-            <Button basic color="blue" onClick={this.recommender}>
+            <Button
+              basic
+              color="blue"
+              onClick={this.recommender}
+              loading={this.state.loading}
+            >
               Recommend
             </Button>
           ) : null}

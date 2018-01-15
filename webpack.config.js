@@ -5,7 +5,7 @@ const webpack = require('webpack');
 const analyze = !!process.env.ANALYZE_ENV;
 const env = process.env.NODE_ENV || 'development';
 const webpackConfig = {
-  name: 'client',
+  name: 'dotabot',
   target: 'web',
 
   entry: ['babel-polyfill', './js/index.js'],
@@ -18,16 +18,13 @@ const webpackConfig = {
         loader: 'babel-loader'
       },
       {
-        test: /\.css&/,
-        use: [
-          {
-            loader: 'css-loader',
-            options: {
-              includePaths: [path.resolve('./js')]
-            }
-          },
-          { loader: 'style-loader' }
-        ]
+        test: /(\.css$)/,
+        include: /node_modules/,
+        loaders: ['style-loader', 'css-loader']
+      },
+      {
+        test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+        loader: 'url-loader?limit=100000'
       }
     ]
   },

@@ -1,0 +1,3 @@
+#!/Volumes/Projects/dotabot/bin/python2.7
+from dota2py import parser
+parser.main()

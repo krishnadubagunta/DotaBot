@@ -36,13 +36,18 @@ class Heroes extends Component {
       heros.splice(removeIndex, 1);
       this.setState({ heros });
     }
+    console.log(props.enemy.length, props.hero.length);
     if (props.hero.length === 5) {
       this.setState({ heroAvail: false });
+    } else {
+      this.setState({ heroAvail: true });
     }
     if (props.enemy.length === 5) {
-      this.setState({ enemy: false });
+      this.setState({ enemyAvail: false });
+    } else {
+      this.setState({ enemyAvail: true });
     }
-    if (!(this.state.heroAvail && this.state.enemyAvail)) {
+    if (!(this.state.heroAvail || this.state.enemyAvail)) {
       this.setState({ availability: false });
     }
   }
@@ -75,7 +80,7 @@ class Heroes extends Component {
                 <Card>
                   {!this.state.availability ? null : (
                     <Card.Content extra>
-                      {this.state.heroAvail === 0 ? null : (
+                      {this.state.heroAvail ? (
                         <Button
                           basic
                           color="green"
@@ -84,7 +89,7 @@ class Heroes extends Component {
                         >
                           Hero
                         </Button>
-                      )}
+                      ) : null}
                     </Card.Content>
                   )}
                   <Image size="medium" src={hero.img} />
@@ -94,7 +99,7 @@ class Heroes extends Component {
 
                   {!this.state.availability ? null : (
                     <Card.Content extra>
-                      {this.state.enemyAvail === 0 ? null : (
+                      {this.state.enemyAvail ? (
                         <Button
                           basic
                           color="red"
@@ -103,7 +108,7 @@ class Heroes extends Component {
                         >
                           Enemy
                         </Button>
-                      )}
+                      ) : null}
                     </Card.Content>
                   )}
                 </Card>
